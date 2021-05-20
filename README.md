@@ -2,7 +2,7 @@
 
 You should create symlink. Your "Link" should be src/data-symlink and "Target" bot's directory.
 
-Example (On Windows):
+Example (On Windows):\
 mklink /J "C:\Users\Name\binance-volatility-trading-bot-web-app\src\data-symlink" "C:\Users\Name\binance-volatility-trading-bot"
 
 # Getting Started with Create React App
