@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { Row, Col, Card, Statistic, Space, Divider } from "antd";
+import { Row, Col, Card } from "antd";
 
-import Coins from "../data/coins_bought";
+import Coins from "../data-symlink/coins_bought";
+import Coin from "./Coin";
 
 export default function CoinsBought() {
   const [coins, setCoins] = useState([]);
@@ -15,21 +16,14 @@ export default function CoinsBought() {
     <div className="container">
       <h1>Coins Bought</h1>
       <Row gutter={[16, 16]}>
-        {Object.entries(coins).map((t, k) => (
+        {Object.entries(coins) && Object.entries(coins).length == 0 && (
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Card>There is not any coins bought right now.</Card>
+          </Col>
+        )}
+        {Object.entries(coins).map((coin, k) => (
           <Col key={k} xs={24} sm={12} md={12} lg={6} xl={6}>
-            <Card title={t[1].symbol}>
-              <Space size="large">
-                <Statistic title="Stop Loss" value={t[1].stop_loss} />
-                <Statistic title="Take Profit" value={t[1].take_profit} />
-              </Space>
-              <Divider />
-              <p>BOUGHT_AT: {t[1].bought_at} </p>
-              <p>VOLUME: {t[1].volume}</p>
-              <Space size="large">
-                <p>Order ID: {t[1].orderid} </p>
-                <p>Time: {new Date(t[1].timestamp).toLocaleDateString()} </p>
-              </Space>
-            </Card>
+            <Coin coin={coin} />
           </Col>
         ))}
       </Row>
