@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Row, Col, Card, Statistic, Space, Divider } from "antd";
 
-import Coins from "../Data/coins_bought";
+import Coins from "../data/coins_bought";
 
 export default function CoinsBought() {
   const [coins, setCoins] = useState([]);
